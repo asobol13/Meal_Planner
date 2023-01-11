@@ -1,3 +1,4 @@
 **/.env
-alembic/*
+**/alembic\alembic.ini
+**/alembic\env.py
 **/docker-compose.yml
