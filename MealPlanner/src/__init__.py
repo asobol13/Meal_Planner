@@ -33,8 +33,8 @@ def create_app(test_config=None):
     migrate = Migrate(app, db)
 
     # Registering the blueprints
-    #from .routes import #accounts, users, meals
-    #app.register_blueprint(accounts.bp)
+    from .routes import accounts#, users, meals
+    app.register_blueprint(accounts.bp)
     #app.register_blueprint(users.bp)
     #app.register_blueprint(meals.bp)
     return app

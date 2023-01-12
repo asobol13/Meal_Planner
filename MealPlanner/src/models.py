@@ -9,6 +9,19 @@ class Account(db.Model):
     username = db.Column(db.String(255), unique=True, nullable=False)
     user_key = db.Column(db.String(255), nullable=False)
 
+    # Initializing the accounts table
+    def __init__(self, username:str, user_key:str):
+        self.username = username
+        self.user_key = user_key
+
+    # Returning accounts table into json
+    def serialize(self):
+        return {
+            'account_id': self.account_id,
+            'username': self.username,
+            'user_key': self.user_key
+        }
+
 # Setting up the class for users table
 class User(db.Model):
     __tablename__='users'
