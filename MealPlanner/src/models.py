@@ -29,6 +29,19 @@ class User(db.Model):
     name = db.Column(db.String(255), nullable=False)
     dietary_restrictions = db.Column(db.Boolean, nullable=True, default=False)
 
+    # Initializing the users table
+    def __init__(self, name:str, dietary_restrictions:bool):
+        self.name = name
+        self.dietary_restrictions = dietary_restrictions
+
+    # Returning accounts table into json
+    def serialize(self):
+        return {
+            'user_id': self.user_id,
+            'name': self.name,
+            'dietary_restrictions': self.dietary_restrictions
+        }
+
 #Setting up the class for meals table
 class Meal(db.Model):
     __tablename__='meals'

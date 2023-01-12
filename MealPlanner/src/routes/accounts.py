@@ -30,7 +30,7 @@ def show(account_id:int):
 # Creating accounts
 @bp.route('', methods=['POST'])
 def create():
-    # Request body muct contain username and user_key
+    # Request body must contain username and user_key
     if 'username' not in request.json or 'user_key' not in request.json:
         return abort(400)
     if len(request.json['username']) < 3 or len(request.json['user_key']) < 8:
@@ -49,11 +49,11 @@ def create():
 def delete(account_id:int):
     a = Account.query.get_or_404(account_id)
     try:
-        db.session.delete(a) # prepare delete statement
-        db.session.commit() # execute delete statement
+        db.session.delete(a) # Prepare delete statement
+        db.session.commit() # Execute delete statement
         return jsonify(True)
     except:
-        # something went wrong
+        # Something went wrong
         return jsonify(False)
 
 # Updating the accounts
