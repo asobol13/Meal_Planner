@@ -4,7 +4,7 @@ db = SQLAlchemy()
 
 # Setting up the class for accounts table
 class Account(db.Model):
-    __tablename__='accounts'
+    __tablename__= 'accounts'
     account_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(255), unique=True, nullable=False)
     user_key = db.Column(db.String(255), nullable=False)

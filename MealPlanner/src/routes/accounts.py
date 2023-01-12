@@ -45,7 +45,6 @@ def create():
     return jsonify(a.serialize())
 
 # Deleting the accounts
-# Deleting accounts
 @bp.route('/<int:account_id>', methods = ['DELETE'])
 def delete(account_id:int):
     a = Account.query.get_or_404(account_id)
