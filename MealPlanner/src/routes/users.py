@@ -34,18 +34,6 @@ def create():
     db.session.commit() # Executing create statement
     return jsonify(u.serialize())
 
-# Deleting the users
-@bp.route('/<int:user_id>', methods = ['DELETE'])
-def delete(user_id:int):
-    u = User.query.get_or_404(user_id)
-    try:
-        db.session.delete(u) # Prepare delete statement
-        db.session.commit() # Execute delete statement
-        return jsonify(True)
-    except:
-        # Something went wrong
-        return jsonify(False)
-
 # Updating the users
 @bp.route('/<int:user_id>', methods = ['PATCH', 'PUT'])
 def update(user_id:int):
