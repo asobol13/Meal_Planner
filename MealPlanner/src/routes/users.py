@@ -14,7 +14,7 @@ def index():
     return jsonify(result)
 
 # Showing specific users
-@bp.route('/<int:user_id>', methods=['GET'])
+@bp.route('/<int:user_id>', methods = ['GET'])
 def show(user_id:int):
     u = User.query.get_or_404(user_id)
     return jsonify(u.serialize())

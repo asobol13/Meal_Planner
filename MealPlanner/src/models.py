@@ -49,3 +49,20 @@ class Meal(db.Model):
     meal_name = db.Column(db.String(255), nullable=False)
     recipes = db.Column(db.String(255), nullable = False)
     ingredients = db.Column(db.String(500), nullable=False)
+    category_name = db.Column(db.String(255), nullable = False)
+
+    # Initializing the meals table
+    def __init__(self, meal_name:str, recipes:str, ingredients:str, category_name:str):
+        self.meal_name = meal_name
+        self.recipes = recipes
+        self.ingredients = ingredients
+        self.category_name = category_name
+
+    # Returning the meals table into json
+    def serialize(self):
+        return {
+            'meal_name':self.meal_name,
+            'recipes':self.recipes,
+            'ingredients':self.ingredients,
+            'category_name':self.category_name
+        }
