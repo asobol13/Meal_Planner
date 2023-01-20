@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, abort, request
-from ..models import User, db
+from ..models import User, db, Account
 
 # Creating blueprint
 bp = Blueprint('users', __name__, url_prefix='/users')
@@ -21,7 +21,7 @@ def show(user_id:int):
 
 # Creating users
 @bp.route('', methods=['POST'])
-def create():
+def createuser():
     # Request body must contain name and dietary_restrictions
     if 'name' not in request.json or 'dietary_restrictions' not in request.json:
         return abort(400)

@@ -28,18 +28,22 @@ class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), nullable=False)
     dietary_restrictions = db.Column(db.Boolean, nullable=True, default=False)
+    account_id = db.Column(db.Integer, db.ForeignKey('account_id'), nullable=False)
+    
 
     # Initializing the users table
-    def __init__(self, name:str, dietary_restrictions:bool):
+    def __init__(self, name:str, dietary_restrictions:bool, account_id:int):
         self.name = name
         self.dietary_restrictions = dietary_restrictions
+        account_id = account_id
 
     # Returning accounts table into json
     def serialize(self):
         return {
             'user_id': self.user_id,
             'name': self.name,
-            'dietary_restrictions': self.dietary_restrictions
+            'dietary_restrictions': self.dietary_restrictions,
+            'account_id': self.account_id
         }
 
 #Setting up the class for meals table
